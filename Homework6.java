@@ -3,21 +3,32 @@ public class Homework6 {
 	/* Finish the constructor and create any necessary instance
 	 * variables
 	 */
+	String str;
+	int aa, bb, cc;
 	public Homework6(String s, int a, int b, int c) {
-
+		str = s;
+		aa = a;
+		bb = b;
+		cc = c;
 	}
 
 	/* Return true if the stored String comes before the provided
 	 * String lexicographically, return false if it does not
 	 */
-	public boolen isBefore(String other) {
-
+	public boolean isBefore(String other) {
+		return str.compareTo(other) < 0;
 	}
 
 	/* Return the maximum of the stored integers
 	 */
 	public int max() {
-
+		if (aa >= bb && aa >= cc) {
+			return aa;
+		} else if (bb >= aa && bb >= cc) {
+			return bb;
+		} else {
+			return cc;
+		}
 	}
 
 	/* Return the middle value of the stored integers. If two numbers
@@ -26,6 +37,27 @@ public class Homework6 {
 	 * to receive full credit
 	 */
 	public int mid() {
+		if (max() == aa) {
+			if (aa == bb) {
+				return cc;
+			} else if (aa == cc || bb > cc) {
+				return bb;
+			} else {
+				return cc;
+			}
+		} else if (max() == bb) {
+			if (bb == cc || aa > cc) {
+				return aa;
+			} else {
+				return cc;
+			}
+		} else {
+			if (cc == aa || aa > bb) {
+				return aa;
+			} else {
+				return bb;
+			}
+		}
 
 	}
 
@@ -35,7 +67,7 @@ public class Homework6 {
 	 * >= or =<; instead use < or > and invert them with !
 	 */
 	public boolean isAscending() {
-
+		return !(aa > bb) && !(bb > cc);
 	}
 
 	public static void main(String[] args) {
@@ -43,7 +75,7 @@ public class Homework6 {
 
 		Homework6 hw6 = new Homework6("Drive", 4, 5, 6);
 
-		if (hw6.isBefore("Cars")) {
+		if (!hw6.isBefore("Cars")) {
 			System.out.println("Pass 1");
 		} else {
 			System.out.println("Fail 1");
@@ -87,5 +119,5 @@ public class Homework6 {
 
 		System.exit(exitCode);
 	}
-	
+
 }
